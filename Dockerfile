@@ -34,11 +34,11 @@ RUN wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continu
     -O /usr/local/bin/linuxdeploy && \
     chmod +x /usr/local/bin/linuxdeploy
 
-# Verify installations
+# Verify installations (skip linuxdeploy --version as it needs FUSE which isn't available during build)
 RUN go version && \
     node --version && \
     npm --version && \
     wails version && \
-    linuxdeploy --version
+    echo "linuxdeploy installed at /usr/local/bin/linuxdeploy"
 
 WORKDIR /workspace
