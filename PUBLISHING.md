@@ -45,8 +45,8 @@ git commit -m "Initial commit: Wails AppImage builder Docker image
 - mingw-w64 and NSIS for Windows cross-compilation
 - Complete build and packaging toolchain"
 
-# Add remote (replace YOUR_USERNAME with your GitHub username)
-git remote add origin git@github.com:YOUR_USERNAME/wails-appimage-builder.git
+# Add remote (replace rkoshy with your GitHub username)
+git remote add origin git@github.com:rkoshy/wails-appimage-builder.git
 
 # Push to GitHub
 git branch -M main
@@ -74,34 +74,34 @@ docker login
 ```bash
 cd ~/repositories/opensource/docker-images/wails-appimage-builder
 
-# Build the image (replace YOUR_DOCKERHUB_USERNAME)
-docker build -t YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest .
+# Build the image (replace scorussolutions)
+docker build -t scorussolutions/wails-appimage-builder:latest .
 
 # Also tag with version
-docker tag YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest \
-  YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.0.0
+docker tag scorussolutions/wails-appimage-builder:latest \
+  scorussolutions/wails-appimage-builder:1.0.0
 ```
 
 ## Step 5: Push to Docker Hub
 
 ```bash
 # Push latest tag
-docker push YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest
+docker push scorussolutions/wails-appimage-builder:latest
 
 # Push version tag
-docker push YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.0.0
+docker push scorussolutions/wails-appimage-builder:1.0.0
 ```
 
 ## Step 6: Update README with Docker Hub Badge
 
-Add this to the top of README.md (replace YOUR_DOCKERHUB_USERNAME):
+Add this to the top of README.md (replace scorussolutions):
 
 ```markdown
 # Wails AppImage Builder
 
-![Docker Pulls](https://img.shields.io/docker/pulls/YOUR_DOCKERHUB_USERNAME/wails-appimage-builder)
-![Docker Image Size](https://img.shields.io/docker/image-size/YOUR_DOCKERHUB_USERNAME/wails-appimage-builder)
-![Docker Image Version](https://img.shields.io/docker/v/YOUR_DOCKERHUB_USERNAME/wails-appimage-builder)
+![Docker Pulls](https://img.shields.io/docker/pulls/scorussolutions/wails-appimage-builder)
+![Docker Image Size](https://img.shields.io/docker/image-size/scorussolutions/wails-appimage-builder)
+![Docker Image Version](https://img.shields.io/docker/v/scorussolutions/wails-appimage-builder)
 
 A Docker image for building [Wails](https://wails.io) applications and packaging them as AppImages for maximum Linux distribution compatibility.
 ```
@@ -157,7 +157,7 @@ gh release create v1.0.0 --title "v1.0.0 - Initial Release" \
 
 ## Usage
 \`\`\`bash
-docker pull YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.0.0
+docker pull scorussolutions/wails-appimage-builder:1.0.0
 \`\`\`
 
 See README.md for complete usage instructions."
@@ -168,15 +168,15 @@ See README.md for complete usage instructions."
 ### Verify Docker Hub
 ```bash
 # Pull your published image
-docker pull YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest
+docker pull scorussolutions/wails-appimage-builder:latest
 
 # Test it
-docker run --rm YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest \
+docker run --rm scorussolutions/wails-appimage-builder:latest \
   bash -c "go version && wails version && linuxdeploy --version"
 ```
 
 ### Verify GitHub
-- Visit https://github.com/YOUR_USERNAME/wails-appimage-builder
+- Visit https://github.com/rkoshy/wails-appimage-builder
 - Check that README renders correctly
 - Check that files are all present
 
@@ -220,11 +220,11 @@ git push origin v1.1.0
 
 # If using automated builds, Docker Hub will auto-build
 # Otherwise, manually build and push:
-docker build -t YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.1.0 .
-docker tag YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.1.0 \
-  YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest
-docker push YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:1.1.0
-docker push YOUR_DOCKERHUB_USERNAME/wails-appimage-builder:latest
+docker build -t scorussolutions/wails-appimage-builder:1.1.0 .
+docker tag scorussolutions/wails-appimage-builder:1.1.0 \
+  scorussolutions/wails-appimage-builder:latest
+docker push scorussolutions/wails-appimage-builder:1.1.0
+docker push scorussolutions/wails-appimage-builder:latest
 ```
 
 ## Security Best Practices
@@ -240,5 +240,5 @@ This image is MIT licensed (see LICENSE file). Make sure this is acceptable for 
 
 ## Questions?
 
-- GitHub Issues: https://github.com/YOUR_USERNAME/wails-appimage-builder/issues
+- GitHub Issues: https://github.com/rkoshy/wails-appimage-builder/issues
 - Wails Discord: https://discord.gg/wails

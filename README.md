@@ -1,6 +1,12 @@
 # Wails AppImage Builder
 
+![Docker Pulls](https://img.shields.io/docker/pulls/scorussolutions/wails-appimage-builder)
+![Docker Image Size](https://img.shields.io/docker/image-size/scorussolutions/wails-appimage-builder)
+![Docker Image Version](https://img.shields.io/docker/v/scorussolutions/wails-appimage-builder)
+
 A Docker image for building [Wails](https://wails.io) applications and packaging them as AppImages for maximum Linux distribution compatibility.
+
+**Docker Hub**: [scorussolutions/wails-appimage-builder](https://hub.docker.com/r/scorussolutions/wails-appimage-builder)
 
 ## Features
 
@@ -25,23 +31,29 @@ A Docker image for building [Wails](https://wails.io) applications and packaging
 
 ## Quick Start
 
-### Build the Docker Image
+### Pull from Docker Hub
 
 ```bash
-docker build -t wails-appimage-builder .
+docker pull scorussolutions/wails-appimage-builder:latest
+```
+
+### Or Build Locally
+
+```bash
+docker build -t scorussolutions/wails-appimage-builder:latest .
 ```
 
 ### Use the Image
 
 **Build a Wails app:**
 ```bash
-docker run --rm -v $(pwd):/workspace -w /workspace wails-appimage-builder \
+docker run --rm -v $(pwd):/workspace -w /workspace scorussolutions/wails-appimage-builder \
   bash -c "cd gui && wails build -platform linux/amd64"
 ```
 
 **Build and package as AppImage:**
 ```bash
-docker run --rm --privileged -v $(pwd):/workspace -w /workspace wails-appimage-builder \
+docker run --rm --privileged -v $(pwd):/workspace -w /workspace scorussolutions/wails-appimage-builder \
   bash -c "chmod +x build-appimage.sh && ./build-appimage.sh"
 ```
 
