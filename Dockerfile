@@ -17,10 +17,10 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Go 1.22.10
-RUN wget -q https://go.dev/dl/go1.22.10.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.22.10.linux-amd64.tar.gz && \
-    rm go1.22.10.linux-amd64.tar.gz
+# Install Go 1.25.5
+RUN wget -q https://go.dev/dl/go1.25.5.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz && \
+    rm go1.25.5.linux-amd64.tar.gz
 
 # Set Go path
 ENV PATH="/usr/local/go/bin:/root/go/bin:${PATH}"

@@ -11,7 +11,7 @@ A Docker image for building [Wails](https://wails.io) applications and packaging
 ## Features
 
 - **Debian 12 (Bookworm) base** - Ensures maximum forward compatibility across Linux distributions
-- **Complete Wails v2 toolchain** - Go 1.22.10, Node.js, npm, Wails CLI
+- **Complete Wails v2 toolchain** - Go 1.25.5, Node.js, npm, Wails CLI
 - **AppImage packaging** - linuxdeploy for creating portable Linux applications
 - **Cross-platform support** - mingw-w64 and NSIS for Windows builds
 - **All dependencies included** - libgtk-3, libwebkit2gtk-4.0, and all build tools
@@ -21,7 +21,7 @@ A Docker image for building [Wails](https://wails.io) applications and packaging
 | Tool | Version | Purpose |
 |------|---------|---------|
 | Debian | 12 (Bookworm) | Base OS |
-| Go | 1.22.10 | Backend compilation |
+| Go | 1.25.5 | Backend compilation |
 | Node.js | 20.x | Frontend builds |
 | Wails | Latest v2 | Desktop app framework |
 | linuxdeploy | Latest | AppImage creation |
