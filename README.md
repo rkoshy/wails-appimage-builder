@@ -13,6 +13,7 @@ A Docker image for building [Wails](https://wails.io) applications and packaging
 - **Debian 12 (Bookworm) base** - Ensures maximum forward compatibility across Linux distributions
 - **Complete Wails v2 toolchain** - Go 1.25.5, Node.js, npm, Wails CLI
 - **AppImage packaging** - linuxdeploy for creating portable Linux applications
+- **Offline AppImage runtime** - Pre-downloaded runtime for packaging without internet access
 - **Cross-platform support** - mingw-w64 and NSIS for Windows builds
 - **All dependencies included** - libgtk-3, libwebkit2gtk-4.0, and all build tools
 
@@ -25,6 +26,7 @@ A Docker image for building [Wails](https://wails.io) applications and packaging
 | Node.js | 20.x | Frontend builds |
 | Wails | Latest v2 | Desktop app framework |
 | linuxdeploy | Latest | AppImage creation |
+| AppImage Runtime | Latest | Offline AppImage packaging |
 | mingw-w64 | Latest | Windows cross-compilation |
 | NSIS | Latest | Windows installer creation |
 | WebKit2GTK | 4.0 | GUI rendering |
@@ -64,6 +66,9 @@ Here's a minimal `build-appimage.sh` for your Wails project:
 ```bash
 #!/bin/bash
 set -e
+
+# Use the offline AppImage runtime included in the Docker image
+export LDAI_RUNTIME_FILE=/opt/appimage-runtime/runtime-x86_64
 
 VERSION=$(git describe --tags --always || echo "dev")
 
@@ -154,6 +159,9 @@ The following environment variables are pre-configured:
 
 - `PATH=/usr/local/go/bin:/root/go/bin:$PATH`
 - `GOPATH=/root/go`
+
+For AppImage builds, you can use:
+- `LDAI_RUNTIME_FILE=/opt/appimage-runtime/runtime-x86_64` - Use the pre-downloaded AppImage runtime for offline packaging
 
 ## Troubleshooting
 

@@ -26,13 +26,20 @@ RUN wget -q https://go.dev/dl/go1.25.5.linux-amd64.tar.gz && \
 ENV PATH="/usr/local/go/bin:/root/go/bin:${PATH}"
 ENV GOPATH="/root/go"
 
-# Install Wails CLI
-RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest
+# Install Wails CLI and copy to system-wide location for non-root access
+RUN go install github.com/wailsapp/wails/v2/cmd/wails@latest && \
+    cp /root/go/bin/wails /usr/local/bin/wails
 
 # Install linuxdeploy for AppImage packaging
 RUN wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage \
     -O /usr/local/bin/linuxdeploy && \
     chmod +x /usr/local/bin/linuxdeploy
+
+# Download AppImage runtime for offline packaging
+RUN mkdir -p /opt/appimage-runtime && \
+    wget -O /opt/appimage-runtime/runtime-x86_64 \
+    https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64 && \
+    chmod +x /opt/appimage-runtime/runtime-x86_64
 
 # Verify installations (skip linuxdeploy --version as it needs FUSE which isn't available during build)
 RUN go version && \
